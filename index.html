@@ -1,0 +1,1953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KaamSathi - Har Kaam Ka Sathi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #4cc9f0;
+            --success: #4ade80;
+            --warning: #fbbf24;
+            --light: #f8f9fa;
+            --dark: #121212;
+            --darker: #0a0a0a;
+            --gradient: linear-gradient(135deg, #4361ee, #3a0ca3);
+            --gradient-light: linear-gradient(135deg, #4cc9f0, #4361ee);
+            --gradient-dark: linear-gradient(135deg, #3a0ca3, #1e0750);
+            --gradient-hero: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --glass: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+        
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--gradient);
+            opacity: 0.1;
+            animation: float 20s infinite linear;
+        }
+        
+        .shape:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+        
+        .shape:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            top: 60%;
+            left: 80%;
+            animation-delay: -5s;
+        }
+        
+        .shape:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            top: 20%;
+            left: 70%;
+            animation-delay: -10s;
+        }
+        
+        .shape:nth-child(4) {
+            width: 250px;
+            height: 250px;
+            top: 70%;
+            left: 10%;
+            animation-delay: -15s;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+            }
+        }
+        
+        /* Language Toggle */
+        .language-toggle {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            z-index: 1000;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 24px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .language-toggle:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* Admin Panel Toggle */
+        .admin-toggle {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            z-index: 1000;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 24px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .admin-toggle:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* Header */
+        header {
+            padding: 30px 0;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        
+        .logo-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: white;
+            font-size: 2rem;
+            box-shadow: var(--shadow);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(67, 97, 238, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(67, 97, 238, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(67, 97, 238, 0);
+            }
+        }
+        
+        .logo-text {
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+        }
+        
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .slogan-box {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slogan-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
+        }
+        
+        .slogan {
+            font-size: 2.2rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+        
+        .slogan-subtext {
+            font-size: 1.3rem;
+            opacity: 0.9;
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 32px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-size: 1.1rem;
+            box-shadow: var(--shadow);
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn-secondary {
+            background: var(--glass);
+            color: white;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+        }
+        
+        .btn-secondary:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 120px 0;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 80px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            font-size: 1.3rem;
+            color: #adb5bd;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .about-text {
+            font-size: 1.3rem;
+            margin-bottom: 50px;
+            line-height: 1.8;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow);
+        }
+        
+        .key-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+            width: 100%;
+        }
+        
+        .key-point {
+            padding: 40px 30px;
+            border-radius: 20px;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow);
+            transition: all 0.4s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .key-point::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+        
+        .key-point:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .key-point:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .key-point-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .key-point:hover .key-point-icon {
+            transform: scale(1.1) rotate(10deg);
+        }
+        
+        .key-point h3 {
+            margin-bottom: 15px;
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+        
+        .launch-notice {
+            background: var(--gradient);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            animation: pulse 2s infinite;
+        }
+        
+        /* Website Preview Section */
+        .website-preview {
+            background: rgba(15, 52, 96, 0.7);
+            text-align: center;
+        }
+        
+        .preview-container {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+        
+        .device {
+            position: relative;
+            background: #333;
+            border-radius: 40px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            border: 10px solid #222;
+        }
+        
+        .device.phone {
+            width: 300px;
+            height: 600px;
+        }
+        
+        .device.desktop {
+            width: 500px;
+            height: 350px;
+            border-radius: 10px;
+        }
+        
+        .device-screen {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .device-screen::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .screen-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: white;
+        }
+        
+        .screen-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .screen-content p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .device-label {
+            margin-top: 20px;
+            font-weight: 600;
+            color: var(--accent);
+        }
+        
+        .coming-soon-banner {
+            background: var(--gradient);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-weight: 600;
+            margin-top: 20px;
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+        
+        /* How It Works Section */
+        .how-it-works {
+            background: rgba(26, 26, 46, 0.7);
+        }
+        
+        .steps {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .steps::before {
+            content: '';
+            position: absolute;
+            top: 100px;
+            left: 10%;
+            width: 80%;
+            height: 3px;
+            background: var(--gradient);
+            z-index: 0;
+        }
+        
+        .step-card {
+            flex: 1 1 250px;
+            padding: 50px 30px;
+            border-radius: 20px;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow);
+            transition: all 0.4s ease;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .step-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 2rem;
+            margin: 0 auto 30px;
+            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.3);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .step-card h3 {
+            margin-bottom: 20px;
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+        
+        .how-it-works-subtext {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 1.3rem;
+            color: #adb5bd;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+        }
+        
+        /* App Download Section */
+        .app-download {
+            background: rgba(22, 33, 62, 0.7);
+            text-align: center;
+        }
+        
+        .app-buttons {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+        
+        .app-btn {
+            display: flex;
+            align-items: center;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 15px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow);
+            min-width: 250px;
+        }
+        
+        .app-btn:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .app-btn i {
+            font-size: 2.5rem;
+            margin-right: 15px;
+        }
+        
+        .app-btn-text {
+            text-align: left;
+        }
+        
+        .app-btn-text span {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 400;
+            opacity: 0.8;
+        }
+        
+        .coming-soon {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            animation: pulse 2s infinite;
+        }
+        
+        /* Team Section */
+        .team-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+        }
+        
+        .team-card {
+            flex: 1 1 350px;
+            max-width: 400px;
+            padding: 50px 30px;
+            border-radius: 20px;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow);
+            transition: all 0.4s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .team-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+        
+        .team-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .team-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .team-avatar {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            margin: 0 auto 30px;
+            box-shadow: 0 10px 30px rgba(67, 97, 238, 0.3);
+            border: 5px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .team-avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .team-avatar::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            transition: 0.5s;
+        }
+        
+        .team-card:hover .team-avatar::before {
+            animation: shine 1.5s;
+        }
+        
+        @keyframes shine {
+            0% {
+                transform: rotate(45deg) translateX(-100%);
+            }
+            100% {
+                transform: rotate(45deg) translateX(100%);
+            }
+        }
+        
+        .team-card:hover .team-avatar {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(67, 97, 238, 0.4);
+        }
+        
+        .team-name {
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+        
+        .team-role {
+            font-size: 1.2rem;
+            color: #adb5bd;
+            margin-bottom: 10px;
+        }
+        
+        .team-instagram {
+            font-size: 1rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        
+        .team-social {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            gap: 10px;
+        }
+        
+        .team-social:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* Contact Section */
+        .contact {
+            background: rgba(26, 26, 46, 0.7);
+        }
+        
+        .contact-content {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .contact-form {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            padding: 50px;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow);
+        }
+        
+        .form-group {
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: var(--accent);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 18px;
+            border: 2px solid var(--glass-border);
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Floating Chat */
+        .floating-chat {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: var(--shadow-lg);
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        .floating-chat:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 30px rgba(67, 97, 238, 0.4);
+            animation: none;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--gradient-dark);
+            color: white;
+            padding: 80px 0 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer-text {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 50px;
+        }
+        
+        .social-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+        
+        /* Admin Panel */
+        .admin-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .admin-panel.active {
+            display: flex;
+        }
+        
+        .admin-login {
+            background: var(--dark);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+        
+        .admin-login h2 {
+            color: var(--accent);
+            margin-bottom: 30px;
+        }
+        
+        .admin-dashboard {
+            background: var(--dark);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            display: none;
+        }
+        
+        .admin-dashboard.active {
+            display: block;
+        }
+        
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--glass-border);
+        }
+        
+        .admin-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: var(--glass);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid var(--glass-border);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: #adb5bd;
+        }
+        
+        .visitor-list {
+            background: var(--glass);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid var(--glass-border);
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .visitor-item {
+            padding: 15px;
+            border-bottom: 1px solid var(--glass-border);
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .visitor-item:last-child {
+            border-bottom: none;
+        }
+        
+        .close-admin {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Hindi Font Support */
+        .hindi {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .slogan {
+                font-size: 1.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+            
+            .steps::before {
+                display: none;
+            }
+            
+            .preview-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .device.desktop {
+                width: 400px;
+                height: 250px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-buttons .btn {
+                width: 250px;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .steps, .team-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .step-card, .team-card {
+                width: 100%;
+                max-width: 400px;
+            }
+            
+            .key-points {
+                grid-template-columns: 1fr;
+            }
+            
+            .language-toggle, .admin-toggle {
+                top: 20px;
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .contact-form {
+                padding: 30px 20px;
+            }
+            
+            .app-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .device.phone {
+                width: 250px;
+                height: 500px;
+            }
+            
+            .device.desktop {
+                width: 350px;
+                height: 220px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .logo-text {
+                font-size: 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .slogan {
+                font-size: 1.5rem;
+            }
+            
+            section {
+                padding: 80px 0;
+            }
+            
+            .floating-chat {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .device.phone {
+                width: 200px;
+                height: 400px;
+            }
+            
+            .device.desktop {
+                width: 300px;
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="floating-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+    </div>
+    
+    <!-- Admin Panel Toggle -->
+    <button class="admin-toggle" id="adminToggle">
+        <i class="fas fa-cog"></i>
+        <span>Admin</span>
+    </button>
+    
+    <!-- Language Toggle -->
+    <button class="language-toggle" id="languageToggle">
+        <i class="fas fa-globe"></i>
+        <span>English / हिन्दी</span>
+    </button>
+    
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <div class="logo-text">KaamSathi</div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 id="heroTitle">KaamSathi</h1>
+                
+                <div class="slogan-box fade-in">
+                    <div class="slogan" id="slogan">Har Kaam Ka Sathi</div>
+                    <div class="slogan-subtext" id="sloganSubtext">Your trusted partner for all service needs</div>
+                </div>
+                
+                <p id="heroSubtext">Connecting you with verified local professionals near you.</p>
+                <div class="hero-buttons">
+                    <a href="#how" class="btn btn-primary">
+                        <i class="fas fa-play-circle"></i>
+                        Explore How It Works
+                    </a>
+                    <a href="https://instagram.com/kaam.sathi" target="_blank" class="btn btn-secondary">
+                        <i class="fab fa-instagram"></i>
+                        Follow @kaam.sathi
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Website Preview Section -->
+    <section class="website-preview">
+        <div class="container">
+            <div class="section-title">
+                <h2>Website Preview</h2>
+                <p>Experience KaamSathi across all your devices</p>
+            </div>
+            <div class="preview-container">
+                <div class="device phone fade-in">
+                    <div class="device-screen">
+                        <div class="screen-content">
+                            <h3>KaamSathi Mobile</h3>
+                            <p>Book services on the go with our mobile app</p>
+                        </div>
+                    </div>
+                    <div class="device-label">Mobile App</div>
+                </div>
+                <div class="device desktop fade-in">
+                    <div class="device-screen">
+                        <div class="screen-content">
+                            <h3>KaamSathi Web</h3>
+                            <p>Access all features from your desktop browser</p>
+                        </div>
+                    </div>
+                    <div class="device-label">Web Version</div>
+                </div>
+            </div>
+            <div class="coming-soon-banner fade-in">
+                <i class="fas fa-rocket"></i> Website Coming Soon!
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2 id="aboutTitle">What is KaamSathi?</h2>
+                <p id="aboutSubtitle">Revolutionizing local services with technology and trust</p>
+            </div>
+            <div class="about-content">
+                <p class="about-text fade-in" id="aboutText">
+                    KaamSathi is a service-based mobile app designed to make daily life easier by connecting users with verified and skilled local workers — from electricians and plumbers to mechanics and cleaners — all within a few taps.
+                </p>
+                <div class="key-points">
+                    <div class="key-point fade-in">
+                        <div class="key-point-icon">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <h3 id="point1Title">Verified Local Workers</h3>
+                        <p id="point1Text">All professionals are thoroughly verified with background checks for your safety.</p>
+                    </div>
+                    <div class="key-point fade-in">
+                        <div class="key-point-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3 id="point2Title">Fast & Easy Booking</h3>
+                        <p id="point2Text">Book services in just a few taps with our user-friendly interface.</p>
+                    </div>
+                    <div class="key-point fade-in">
+                        <div class="key-point-icon">
+                            <i class="fas fa-rupee-sign"></i>
+                        </div>
+                        <h3 id="point3Title">Transparent 9% Commission Only</h3>
+                        <p id="point3Text">We charge only 9% commission - fair pricing for both customers and professionals.</p>
+                    </div>
+                </div>
+                <div class="launch-notice fade-in" id="launchNotice">
+                    <i class="fas fa-rocket"></i>
+                    🚀 Launching soon in Jharkhand — specially for Tier-2 & Tier-3 cities!
+                </div>
+                <a href="#how" class="btn btn-primary fade-in" id="learnMoreBtn">
+                    <i class="fas fa-arrow-right"></i>
+                    Learn How It Works
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- How It Works Section -->
+    <section id="how" class="how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2 id="howTitle">How KaamSathi Works</h2>
+                <p id="howSubtitle">Simple steps to get your work done efficiently</p>
+            </div>
+            <div class="steps">
+                <div class="step-card fade-in">
+                    <div class="step-number">1</div>
+                    <h3 id="step1Title">Choose Your Service</h3>
+                    <p id="step1Text">Select the type of work (Electrician, Plumber, etc.)</p>
+                </div>
+                <div class="step-card fade-in">
+                    <div class="step-number">2</div>
+                    <h3 id="step2Title">Find Verified Local Worker</h3>
+                    <p id="step2Text">App filters trusted professionals near your location.</p>
+                </div>
+                <div class="step-card fade-in">
+                    <div class="step-number">3</div>
+                    <h3 id="step3Title">Book Securely</h3>
+                    <p id="step3Text">In-app wallet with instant confirmation and tracking.</p>
+                </div>
+                <div class="step-card fade-in">
+                    <div class="step-number">4</div>
+                    <h3 id="step4Title">Work Done Hassle-Free!</h3>
+                    <p id="step4Text">Relax while professionals complete your work efficiently.</p>
+                </div>
+            </div>
+            <p class="how-it-works-subtext fade-in" id="howSubtext">
+                We bring professionalism, safety, and speed — right to your doorstep.
+            </p>
+        </div>
+    </section>
+    
+    <!-- App Download Section -->
+    <section class="app-download">
+        <div class="container">
+            <div class="section-title">
+                <h2>Download KaamSathi App</h2>
+                <p>Get the app now and experience seamless service booking</p>
+            </div>
+            <div class="app-buttons">
+                <a href="#" class="app-btn">
+                    <i class="fab fa-google-play"></i>
+                    <div class="app-btn-text">
+                        GET IT ON
+                        <span>Google Play</span>
+                    </div>
+                    <div class="coming-soon">Coming Soon</div>
+                </a>
+                <a href="#" class="app-btn">
+                    <i class="fab fa-apple"></i>
+                    <div class="app-btn-text">
+                        Download on the
+                        <span>App Store</span>
+                    </div>
+                    <div class="coming-soon">Coming Soon</div>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Team Section -->
+    <section id="team">
+        <div class="container">
+            <div class="section-title">
+                <h2 id="teamTitle">Meet the Team Behind KaamSathi</h2>
+                <p id="teamSubtitle">The visionaries revolutionizing local services</p>
+            </div>
+            <div class="team-cards">
+                <div class="team-card fade-in">
+                    <div class="team-avatar">
+                        <img src="niket.png" alt="Niket Kumar">
+                    </div>
+                    <h3 class="team-name">Niket Kumar</h3>
+                    <p class="team-role">Founder, KaamSathi</p>
+                    <p class="team-instagram">@niketkumarx</p>
+                    <a href="https://instagram.com/niketkumarx" target="_blank" class="team-social">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                </div>
+                <div class="team-card fade-in">
+                    <div class="team-avatar">
+                        <img src="saket.png" alt="Saket Kumar">
+                    </div>
+                    <h3 class="team-name">Saket Kumar</h3>
+                    <p class="team-role">Founding Member</p>
+                    <p class="team-instagram">@saket_og</p>
+                    <a href="https://instagram.com/saket_og" target="_blank" class="team-social">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2 id="contactTitle">Need Help or Have a Question?</h2>
+                <p id="contactSubtext">Message us directly — we'll reply on Instagram DM 💙</p>
+            </div>
+            <div class="contact-content">
+                <form class="contact-form fade-in" onsubmit="window.open('https://instagram.com/kaam.sathi','_blank');return false;">
+                    <div class="form-group">
+                        <label for="name" id="nameLabel">Name</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message" id="messageLabel">Message</label>
+                        <textarea id="message" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="sendMessageBtn">
+                        <i class="fas fa-paper-plane"></i>
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Floating Chat -->
+    <div class="floating-chat" onclick="window.open('https://instagram.com/kaam.sathi','_blank')">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-text" id="footerText">
+                    Follow <a href="https://instagram.com/kaam.sathi" target="_blank" style="color: white; text-decoration: underline;">@kaam.sathi</a> for updates and upcoming launch details 🚀
+                </p>
+                <div class="social-icons">
+                    <a href="https://instagram.com/kaam.sathi" target="_blank" class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+                <div class="copyright">
+                    © 2025 KaamSathi | All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Admin Panel -->
+    <div class="admin-panel" id="adminPanel">
+        <div class="admin-login" id="adminLogin">
+            <h2>Admin Login</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
+            </form>
+        </div>
+        
+        <div class="admin-dashboard" id="adminDashboard">
+            <div class="admin-header">
+                <h2>Admin Dashboard</h2>
+                <button class="close-admin" id="closeAdmin">
+                    <i class="fas fa-times"></i> Close
+                </button>
+            </div>
+            
+            <div class="admin-stats">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalVisitors">0</div>
+                    <div class="stat-label">Total Visitors</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="todayVisitors">0</div>
+                    <div class="stat-label">Today's Visitors</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="uniqueVisitors">0</div>
+                    <div class="stat-label">Unique Visitors</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="pageViews">0</div>
+                    <div class="stat-label">Page Views</div>
+                </div>
+            </div>
+            
+            <div class="visitor-list">
+                <h3 style="margin-bottom: 20px;">Recent Visitors</h3>
+                <div id="visitorList">
+                    <!-- Visitor list will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Visitor Tracking System
+        class VisitorTracker {
+            constructor() {
+                this.storageKey = 'kaamsathi_visitors';
+                this.visitors = this.loadVisitors();
+                this.trackVisit();
+            }
+            
+            loadVisitors() {
+                const stored = localStorage.getItem(this.storageKey);
+                return stored ? JSON.parse(stored) : {
+                    total: 0,
+                    today: 0,
+                    unique: new Set(),
+                    pageViews: 0,
+                    visits: [],
+                    lastReset: new Date().toDateString()
+                };
+            }
+            
+            saveVisitors() {
+                localStorage.setItem(this.storageKey, JSON.stringify({
+                    ...this.visitors,
+                    unique: Array.from(this.visitors.unique)
+                }));
+            }
+            
+            trackVisit() {
+                const today = new Date().toDateString();
+                
+                // Reset daily counter if it's a new day
+                if (this.visitors.lastReset !== today) {
+                    this.visitors.today = 0;
+                    this.visitors.lastReset = today;
+                }
+                
+                // Generate visitor ID
+                let visitorId = localStorage.getItem('visitor_id');
+                if (!visitorId) {
+                    visitorId = 'visitor_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+                    localStorage.setItem('visitor_id', visitorId);
+                    this.visitors.unique.add(visitorId);
+                }
+                
+                // Update counters
+                this.visitors.total++;
+                this.visitors.today++;
+                this.visitors.pageViews++;
+                
+                // Add visit record
+                this.visitors.visits.unshift({
+                    id: visitorId,
+                    timestamp: new Date().toISOString(),
+                    userAgent: navigator.userAgent,
+                    referrer: document.referrer || 'Direct'
+                });
+                
+                // Keep only last 50 visits
+                if (this.visitors.visits.length > 50) {
+                    this.visitors.visits = this.visitors.visits.slice(0, 50);
+                }
+                
+                this.saveVisitors();
+                this.updateDashboard();
+            }
+            
+            updateDashboard() {
+                document.getElementById('totalVisitors').textContent = this.visitors.total.toLocaleString();
+                document.getElementById('todayVisitors').textContent = this.visitors.today.toLocaleString();
+                document.getElementById('uniqueVisitors').textContent = this.visitors.unique.size.toLocaleString();
+                document.getElementById('pageViews').textContent = this.visitors.pageViews.toLocaleString();
+                
+                // Update visitor list
+                const visitorList = document.getElementById('visitorList');
+                visitorList.innerHTML = '';
+                
+                this.visitors.visits.slice(0, 10).forEach(visit => {
+                    const visitTime = new Date(visit.timestamp).toLocaleString();
+                    const visitorItem = document.createElement('div');
+                    visitorItem.className = 'visitor-item';
+                    visitorItem.innerHTML = `
+                        <div>
+                            <strong>${visit.id}</strong>
+                            <div style="font-size: 0.8rem; color: #adb5bd;">${visitTime}</div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 0.8rem;">${visit.referrer}</div>
+                        </div>
+                    `;
+                    visitorList.appendChild(visitorItem);
+                });
+            }
+            
+            resetStats() {
+                this.visitors = {
+                    total: 0,
+                    today: 0,
+                    unique: new Set(),
+                    pageViews: 0,
+                    visits: [],
+                    lastReset: new Date().toDateString()
+                };
+                this.saveVisitors();
+                this.updateDashboard();
+            }
+        }
+        
+        // Initialize visitor tracker
+        const tracker = new VisitorTracker();
+        
+        // Admin Panel Functionality
+        const adminPanel = document.getElementById('adminPanel');
+        const adminToggle = document.getElementById('adminToggle');
+        const adminLogin = document.getElementById('adminLogin');
+        const adminDashboard = document.getElementById('adminDashboard');
+        const loginForm = document.getElementById('loginForm');
+        const closeAdmin = document.getElementById('closeAdmin');
+        
+        adminToggle.addEventListener('click', () => {
+            adminPanel.classList.add('active');
+            adminLogin.style.display = 'block';
+            adminDashboard.classList.remove('active');
+        });
+        
+        closeAdmin.addEventListener('click', () => {
+            adminPanel.classList.remove('active');
+        });
+        
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (username === 'niketkumarx' && password === 'harkaamkasathi@5258') {
+                adminLogin.style.display = 'none';
+                adminDashboard.classList.add('active');
+                tracker.updateDashboard();
+            } else {
+                alert('Invalid credentials! Please try again.');
+            }
+        });
+        
+        // Language Toggle Functionality
+        const languageToggle = document.getElementById('languageToggle');
+        let isEnglish = true;
+        
+        // English content
+        const englishContent = {
+            heroTitle: "KaamSathi",
+            slogan: "Har Kaam Ka Sathi",
+            sloganSubtext: "Your trusted partner for all service needs",
+            heroSubtext: "Connecting you with verified local professionals near you.",
+            aboutTitle: "What is KaamSathi?",
+            aboutSubtitle: "Revolutionizing local services with technology and trust",
+            aboutText: "KaamSathi is a service-based mobile app designed to make daily life easier by connecting users with verified and skilled local workers — from electricians and plumbers to mechanics and cleaners — all within a few taps.",
+            point1Title: "Verified Local Workers",
+            point1Text: "All professionals are thoroughly verified with background checks for your safety.",
+            point2Title: "Fast & Easy Booking",
+            point2Text: "Book services in just a few taps with our user-friendly interface.",
+            point3Title: "Transparent 9% Commission Only",
+            point3Text: "We charge only 9% commission - fair pricing for both customers and professionals.",
+            launchNotice: "🚀 Launching soon in Jharkhand — specially for Tier-2 & Tier-3 cities!",
+            learnMoreBtn: "Learn How It Works",
+            howTitle: "How KaamSathi Works",
+            howSubtitle: "Simple steps to get your work done efficiently",
+            step1Title: "Choose Your Service",
+            step1Text: "Select the type of work (Electrician, Plumber, etc.)",
+            step2Title: "Find Verified Local Worker",
+            step2Text: "App filters trusted professionals near your location.",
+            step3Title: "Book Securely",
+            step3Text: "In-app wallet with instant confirmation and tracking.",
+            step4Title: "Work Done Hassle-Free!",
+            step4Text: "Relax while professionals complete your work efficiently.",
+            howSubtext: "We bring professionalism, safety, and speed — right to your doorstep.",
+            teamTitle: "Meet the Team Behind KaamSathi",
+            teamSubtitle: "The visionaries revolutionizing local services",
+            contactTitle: "Need Help or Have a Question?",
+            contactSubtext: "Message us directly — we'll reply on Instagram DM 💙",
+            nameLabel: "Name",
+            messageLabel: "Message",
+            sendMessageBtn: "Send Message",
+            footerText: "Follow <a href='https://instagram.com/kaam.sathi' target='_blank' style='color: white; text-decoration: underline;'>@kaam.sathi</a> for updates and upcoming launch details 🚀"
+        };
+        
+        // Hindi content
+        const hindiContent = {
+            heroTitle: "KaamSathi",
+            slogan: "हर काम का साथी",
+            sloganSubtext: "आपकी सभी सेवा आवश्यकताओं के लिए विश्वसनीय साथी",
+            heroSubtext: "आपको आपके आस-पास सत्यापित स्थानीय पेशेवरों से जोड़ना।",
+            aboutTitle: "KaamSathi क्या है?",
+            aboutSubtitle: "प्रौद्योगिकी और विश्वास के साथ स्थानीय सेवाओं में क्रांति",
+            aboutText: "KaamSathi एक सेवा-आधारित मोबाइल ऐप है जो सत्यापित और कुशल स्थानीय कार्यकर्ताओं — इलेक्ट्रीशियन, प्लंबर, मैकेनिक और क्लीनर — से जोड़कर दैनिक जीवन को आसान बनाता है। सभी कुछ ही टैप में।",
+            point1Title: "सत्यापित स्थानीय कार्यकर्ता",
+            point1Text: "सभी पेशेवरों की सुरक्षा जांच के साथ पूरी तरह से सत्यापित हैं।",
+            point2Title: "तेज़ और आसान बुकिंग",
+            point2Text: "हमारे उपयोगकर्ता-अनुकूल इंटरफेस के साथ कुछ ही टैप में सेवाएं बुक करें।",
+            point3Title: "केवल 9% कमीशन",
+            point3Text: "हम केवल 9% कमीशन लेते हैं - ग्राहकों और पेशेवरों दोनों के लिए उचित मूल्य निर्धारण।",
+            launchNotice: "🚀 जल्द ही झारखंड में लॉन्च — विशेष रूप से टियर-2 और टियर-3 शहरों के लिए!",
+            learnMoreBtn: "यह कैसे काम करता है जानें",
+            howTitle: "KaamSathi कैसे काम करता है",
+            howSubtitle: "अपना काम कुशलतापूर्वक करवाने के सरल चरण",
+            step1Title: "अपनी सेवा चुनें",
+            step1Text: "काम का प्रकार चुनें (इलेक्ट्रीशियन, प्लंबर, आदि)",
+            step2Title: "सत्यापित स्थानीय कार्यकर्ता ढूंढें",
+            step2Text: "ऐप आपके स्थान के पास विश्वसनीय पेशेवरों को फिल्टर करता है।",
+            step3Title: "सुरक्षित रूप से बुक करें",
+            step3Text: "तत्काल पुष्टि और ट्रैकिंग के साथ इन-ऐप वॉलेट।",
+            step4Title: "बिना किसी परेशानी के काम पूरा!",
+            step4Text: "आराम करें जबकि पेशेवर आपका काम कुशलतापूर्वक पूरा करते हैं।",
+            howSubtext: "हम पेशेवरता, सुरक्षा और गति — सीधे आपके दरवाजे पर लाते हैं।",
+            teamTitle: "KaamSathi के पीछे की टीम से मिलें",
+            teamSubtitle: "स्थानीय सेवाओं में क्रांति लाने वाले दूरदर्शी",
+            contactTitle: "मदद चाहिए या कोई सवाल है?",
+            contactSubtext: "हमें सीधे संदेश भेजें — हम Instagram DM पर जवाब देंगे 💙",
+            nameLabel: "नाम",
+            messageLabel: "संदेश",
+            sendMessageBtn: "संदेश भेजें",
+            footerText: "अपडेट और आगामी लॉन्च विवरण के लिए <a href='https://instagram.com/kaam.sathi' target='_blank' style='color: white; text-decoration: underline;'>@kaam.sathi</a> को फॉलो करें 🚀"
+        };
+        
+        // Toggle language function
+        languageToggle.addEventListener('click', function() {
+            isEnglish = !isEnglish;
+            const content = isEnglish ? englishContent : hindiContent;
+            
+            // Update all text content
+            document.getElementById('heroTitle').textContent = content.heroTitle;
+            document.getElementById('slogan').textContent = content.slogan;
+            document.getElementById('sloganSubtext').textContent = content.sloganSubtext;
+            document.getElementById('heroSubtext').textContent = content.heroSubtext;
+            document.getElementById('aboutTitle').textContent = content.aboutTitle;
+            document.getElementById('aboutSubtitle').textContent = content.aboutSubtitle;
+            document.getElementById('aboutText').textContent = content.aboutText;
+            document.getElementById('point1Title').textContent = content.point1Title;
+            document.getElementById('point1Text').textContent = content.point1Text;
+            document.getElementById('point2Title').textContent = content.point2Title;
+            document.getElementById('point2Text').textContent = content.point2Text;
+            document.getElementById('point3Title').textContent = content.point3Title;
+            document.getElementById('point3Text').textContent = content.point3Text;
+            document.getElementById('launchNotice').innerHTML = `<i class="fas fa-rocket"></i> ${content.launchNotice}`;
+            document.getElementById('learnMoreBtn').innerHTML = `<i class="fas fa-arrow-right"></i> ${content.learnMoreBtn}`;
+            document.getElementById('howTitle').textContent = content.howTitle;
+            document.getElementById('howSubtitle').textContent = content.howSubtitle;
+            document.getElementById('step1Title').textContent = content.step1Title;
+            document.getElementById('step1Text').textContent = content.step1Text;
+            document.getElementById('step2Title').textContent = content.step2Title;
+            document.getElementById('step2Text').textContent = content.step2Text;
+            document.getElementById('step3Title').textContent = content.step3Title;
+            document.getElementById('step3Text').textContent = content.step3Text;
+            document.getElementById('step4Title').textContent = content.step4Title;
+            document.getElementById('step4Text').textContent = content.step4Text;
+            document.getElementById('howSubtext').textContent = content.howSubtext;
+            document.getElementById('teamTitle').textContent = content.teamTitle;
+            document.getElementById('teamSubtitle').textContent = content.teamSubtitle;
+            document.getElementById('contactTitle').textContent = content.contactTitle;
+            document.getElementById('contactSubtext').textContent = content.contactSubtext;
+            document.getElementById('nameLabel').textContent = content.nameLabel;
+            document.getElementById('messageLabel').textContent = content.messageLabel;
+            document.getElementById('sendMessageBtn').innerHTML = `<i class="fas fa-paper-plane"></i> ${content.sendMessageBtn}`;
+            document.getElementById('footerText').innerHTML = content.footerText;
+            
+            // Update toggle button text
+            languageToggle.innerHTML = isEnglish ? 
+                `<i class="fas fa-globe"></i><span>English / हिन्दी</span>` : 
+                `<i class="fas fa-globe"></i><span>हिन्दी / English</span>`;
+            
+            // Add Hindi class for styling if needed
+            if (!isEnglish) {
+                document.body.classList.add('hindi');
+            } else {
+                document.body.classList.remove('hindi');
+            }
+        });
+        
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
